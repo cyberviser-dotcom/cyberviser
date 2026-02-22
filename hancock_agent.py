@@ -258,7 +258,7 @@ def _scope_ack_env() -> bool:
     """Return True if the user explicitly acknowledged authorized use via env."""
     ack = os.getenv("HANCOCK_SCOPE_ACK", "").strip().lower()
     token = _scope_token()
-    return bool(token) and token in ack
+    return bool(token) and ack == token
 
 
 def make_ollama_client() -> OpenAI:
@@ -475,7 +475,7 @@ def build_app(client, model: str):
         if not isinstance(payload, dict):
             return False, "Invalid JSON payload"
         token = _scope_token()
-        provided = (payload.get("scope") or payload.get("authorization") or "").strip().lower()
+        provided = (payload.get("scope") or "").strip().lower()
         if provided != token:
             return False, f"Authorized use only. Provide scope='{token}' in the request body."
         return True, ""

@@ -14,6 +14,10 @@ import threading
 import time
 import os
 
+SCOPE_TOKEN = os.getenv("TERMINAL_PRESSURE_SCOPE_VALUE", "authorized").strip().lower()
+SCOPE_ACK_ENV = os.getenv("TERMINAL_PRESSURE_SCOPE_ACK",
+                          os.getenv("TERMINAL_PRESSURE_ACK", "")).strip().lower()
+
 def scan_vulns(target):
     scanner = nmap.PortScanner()
     print(f"[+] Pressuring target: {target}")
@@ -60,7 +64,7 @@ def exploit_chain(target, payload="default_backdoor"):
 def main():
     parser = argparse.ArgumentParser(description="Terminal Pressure: Cyber Tool for Pressure Testing")
     subparsers = parser.add_subparsers(dest='command')
-    parser.add_argument('--confirm-authorized', action='store_true',
+    parser.add_argument('--scope-ack', '--confirm-authorized', dest='scope_ack', action='store_true',
                         help="Confirm that all actions are within authorized scope")
 
     scan_parser = subparsers.add_parser('scan', help='Scan for vulnerabilities')
@@ -78,13 +82,13 @@ def main():
 
     args = parser.parse_args()
 
-    if not args.confirm_authorized and os.getenv("TERMINAL_PRESSURE_ACK", "").strip().lower() != "authorized":
+    if not args.scope_ack and SCOPE_ACK_ENV != SCOPE_TOKEN:
         try:
-            ack = input("Authorized use only. Type 'authorized' to proceed: ").strip().lower()
+            ack = input(f"Authorized use only. Type '{SCOPE_TOKEN}' to proceed: ").strip().lower()
         except (EOFError, KeyboardInterrupt):
             print("\n[!] Authorization not confirmed. Exiting.")
             return
-        if ack != "authorized":
+        if ack != SCOPE_TOKEN:
             print("[!] Authorization not confirmed. Exiting.")
             return
 
