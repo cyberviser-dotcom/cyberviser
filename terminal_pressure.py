@@ -12,6 +12,7 @@ from scapy.sendrecv import send
 import random
 import threading
 import time
+import os
 
 def scan_vulns(target):
     scanner = nmap.PortScanner()
@@ -59,6 +60,8 @@ def exploit_chain(target, payload="default_backdoor"):
 def main():
     parser = argparse.ArgumentParser(description="Terminal Pressure: Cyber Tool for Pressure Testing")
     subparsers = parser.add_subparsers(dest='command')
+    parser.add_argument('--confirm-authorized', action='store_true',
+                        help="Confirm that all actions are within authorized scope")
 
     scan_parser = subparsers.add_parser('scan', help='Scan for vulnerabilities')
     scan_parser.add_argument('target', type=str, help='Target IP/hostname')
@@ -74,6 +77,16 @@ def main():
     exploit_parser.add_argument('--payload', type=str, default='default_backdoor', help='Payload type')
 
     args = parser.parse_args()
+
+    if not args.confirm_authorized and os.getenv("TERMINAL_PRESSURE_ACK", "").strip().lower() != "authorized":
+        try:
+            ack = input("Authorized use only. Type 'authorized' to proceed: ").strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            print("\n[!] Authorization not confirmed. Exiting.")
+            return
+        if ack != "authorized":
+            print("[!] Authorization not confirmed. Exiting.")
+            return
 
     if args.command == 'scan':
         scan_vulns(args.target)
