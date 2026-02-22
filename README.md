@@ -11,7 +11,7 @@
 
 **AI-powered cybersecurity. Built for operators.**
 
-[![Website](https://img.shields.io/badge/Website-cyberviser.github.io-00ff88?style=flat-square&logo=github)](https://cyberviser.github.io/Hancock/)
+[![Website](https://img.shields.io/badge/Website-cyberviser.netlify.app-00ff88?style=flat-square&logo=netlify)](https://cyberviser.netlify.app)
 [![Email](https://img.shields.io/badge/Contact-contact@cyberviser.ai-00e5ff?style=flat-square&logo=gmail)](mailto:contact@cyberviser.ai)
 
 </div>
@@ -20,12 +20,17 @@
 
 ### 🛡️ What We Build
 
-We're building **Hancock** — an AI cybersecurity agent fine-tuned on Mistral 7B using MITRE ATT&CK, NVD/CVE, and real-world pentest knowledge. One agent. Three specialist modes. A full REST API.
+We build **Hancock** — an AI cybersecurity agent fine-tuned on Mistral 7B using MITRE ATT&CK, NVD/CVE, CISA KEV, Atomic Red Team, and GitHub Advisories. One agent. Eight specialist modes. A full REST API with 12 endpoints.
 
 ```
-Pentest Mode  →  Recon · Exploitation · CVE Research · PTES Reporting
-SOC Mode      →  Alert Triage · SIEM Queries · Incident Response · Threat Hunting
-CISO Mode     →  Risk Reporting · Compliance · Board Summaries  [Phase 3]
+🔴 Pentest    →  Recon · Exploitation · CVE Research · PTES Reporting
+🔵 SOC        →  Alert Triage · SIEM Queries · Incident Response · Threat Hunting
+👔 CISO       →  Risk Reporting · Compliance · Board Summaries · Gap Analysis
+⚡ Auto       →  Context-aware switching between all modes
+💻 Code       →  YARA · KQL · SPL · Sigma · Python · Bash
+🔍 Sigma      →  Detection rule authoring with ATT&CK tagging
+🦠 YARA       →  Malware detection rule authoring
+🔎 IOC        →  Threat intelligence enrichment for IOCs
 ```
 
 ---
@@ -34,8 +39,7 @@ CISO Mode     →  Risk Reporting · Compliance · Board Summaries  [Phase 3]
 
 | Repo | Description | Status |
 |------|-------------|--------|
-| [**Hancock**](https://github.com/cyberviser/Hancock) | 🤖 AI security agent — Mistral 7B + NVIDIA NIM | 🔨 Building |
-| [**TerminalPressure**](https://github.com/cyberviser/TerminalPressure) | 💥 Authorized pentest toolkit — nmap, scapy, exploit chains | ✅ Live |
+| [**Hancock**](https://github.com/cyberviser/Hancock) | 🤖 AI security agent — Mistral 7B + NVIDIA NIM | ✅ Live |
 
 ---
 
@@ -60,5 +64,5 @@ All software is proprietary. For enterprise licensing, integrations, or partners
 ---
 
 <div align="center">
-  <sub>© 2025 CyberViser · All Rights Reserved · <a href="https://cyberviser.github.io/Hancock/">cyberviser.github.io/Hancock</a></sub>
+  <sub>© 2026 CyberViser · All Rights Reserved · <a href="https://cyberviser.netlify.app">cyberviser.netlify.app</a></sub>
 </div>
