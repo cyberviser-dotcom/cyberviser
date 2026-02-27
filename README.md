@@ -10,9 +10,7 @@
 ```
 
 **AI-powered cybersecurity. Built for operators.**
-
-[![Website](https://img.shields.io/badge/Website-cyberviser.netlify.app-00ff88?style=flat-square&logo=netlify)](https://cyberviser.netlify.app)
-[![Email](https://img.shields.io/badge/Contact-contact@cyberviser.ai-00e5ff?style=flat-square&logo=gmail)](mailto:contact@cyberviser.ai)
+[![Email](https://img.shields.io/badge/Contact-contact@cyberviser.ai-00e5ff?style=flat-square&logo=gmail)](cyberviser@cyberviserai.com)
 
 </div>
 
